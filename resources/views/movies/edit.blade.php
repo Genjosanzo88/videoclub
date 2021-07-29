@@ -19,6 +19,15 @@
 				<hr>
 				@csrf
 				<div class="form-group">
+					<label for="nombre">Id</label>
+					<input class="form-control bg-light shadow-sm @error('id') is-invalid @else border-0 @enderror"
+						id="id"
+						type="text"
+						name="id"
+						value="{{ old('id', $movie->id) }}"
+					>
+				</div>
+				<div class="form-group">
 					<label for="nombre">Nombre</label>
 					<input class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
 						id="name"

@@ -6,9 +6,6 @@
 <div class="container">
 	<div class="d-flex justify-content-between align-items-center mb-3">
 		<h1 class="display-4 mb-0">Películas</h1>
-		<a class="btn btn-primary"
-			href="#"
-		>Crear nueva película</a>
 	</div>
 	<table class="table">
 	  <thead class="thead-dark">
@@ -16,7 +13,9 @@
 	      <th scope="col">Nombre</th>
 	      <th scope="col">Año</th>
 	      <th scope="col">Cantidad</th>
+	      @auth
 	      <th scope="col">Acciones</th>
+	      @endauth
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -25,6 +24,7 @@
 	  				<td><a href="{{ route('movies.show', $movie->id) }}">{{ $movie->name }}</a></td>
 	  				<td>{{ $movie->release_date }}</td>
 	  				<td>{{ $movie->quantity }}</td>
+	  				@auth
 	  				@if($movie->quantity === 0)
 	  				<td>
 	  					<span class="btn btn-danger">No disponible</span>
@@ -36,6 +36,7 @@
 						>Alquilar</a>
 					</td>
 					@endif
+					@endauth
 	  			</tr>
 	  		@endforeach
 	  </tbody>

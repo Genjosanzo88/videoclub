@@ -15,5 +15,11 @@ class Movie extends Model
         'quantity',
         'release_date',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }
 
