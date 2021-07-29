@@ -2,10 +2,14 @@
 <html>
 <head>
 	<title>@yield('title')</title>
+	<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	 <meta name="csrf-token" content="{{ csrf_token() }}">
+	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 	<script src="{{ mix('js/app.js') }}" defer></script>
+
 </head>
 <body>
 	<div id="app" class="d-flex flex-column h-screen
@@ -23,4 +27,6 @@
 		</footer>
 	</div>
 </body>
+
 </html>
+

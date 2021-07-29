@@ -4,32 +4,41 @@
 
 @section('content')
 <div class="container">
-	<p class="lead text-secondary">Películas</p>
-	<ul class="list-group">
-		@forelse ($movies as $movie)
-			<li class="list-group-item border-0 mb-3 shadow-sm">
-				<a
-					class="d-flex text-secondary justify-content-between align-items-center"
-					href="{{ route('movies.show', $movie) }}"
-				>
-					<span class="font-weight-bold">
-						{{ $movie->name }}
-					</span>
-					<span class="text-black-50">
-						{{ $movie->release_date }}
-					</span>
-					<span class="text-black-50">
-						{{ $movie->quantity }}
-					</span>
-				</a>
-			</li>
-		@empty
-			<li class="list-group-item border-0 mb-3 shadow-sm">
-				No hay peliculas para mostrar
-			</li>
-		@endforelse
-
-		{{ $movies->links() }}
-	</ul>
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<h1 class="display-4 mb-0">Películas</h1>
+		<a class="btn btn-primary"
+			href="#"
+		>Crear nueva película</a>
+	</div>
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Año</th>
+	      <th scope="col">Cantidad</th>
+	      <th scope="col">Acciones</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  		@foreach($movies as $movie)
+	  			<tr>
+	  				<td><a href="{{ route('movies.show', $movie->id) }}">{{ $movie->name }}</a></td>
+	  				<td>{{ $movie->release_date }}</td>
+	  				<td>{{ $movie->quantity }}</td>
+	  				@if($movie->quantity === 0)
+	  				<td>
+	  					<span class="btn btn-danger">No disponible</span>
+  					</td>
+	  				@else
+	  				<td>
+	  					<a class="btn btn-primary"
+							href="{{ route('movies.edit', $movie->id) }}"
+						>Alquilar</a>
+					</td>
+					@endif
+	  			</tr>
+	  		@endforeach
+	  </tbody>
+	</table>
 </div>
 @endsection

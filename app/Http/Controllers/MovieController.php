@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Movie;
 
 class MovieController extends Controller
@@ -60,9 +61,11 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        //
+        return view('movies.edit',[
+            'movie' => $movie
+        ]);
     }
 
     /**
@@ -74,7 +77,9 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('movies')->where('id', $id)->update(['quantity' => DB::raw('quantity-1')]);
+        return back()->with('info', 'Película alquilada');
+        //return view('movies.index');
     }
 
     /**
