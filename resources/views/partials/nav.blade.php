@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light navbar-expand-sm bg-whitem shadow-sm">
 	<div class="container">
 		<a class="navbar-brand" href="{{ route('home') }}">
-			Databele
+			Videoclub
 		</a>
 		<button class="navbar-toggler" type="button"
 			data-toggle="collapse"
